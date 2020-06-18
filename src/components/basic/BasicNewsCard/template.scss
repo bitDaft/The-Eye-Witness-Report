@@ -2,7 +2,6 @@
   & > a {
     text-decoration: none;
     display: flex;
-    // flex-flow: row-reverse wrap;
     flex-flow: column nowrap;
     align-items: stretch;
     justify-content: center;
@@ -15,7 +14,6 @@
     }
     & > .img {
       width: 100%;
-      // max-width: 220px;
       height: 66.5%;
       flex-shrink: 1;
       flex-grow: 1;

@@ -2,8 +2,15 @@ import React from "react";
 import "./template.scss";
 
 function BasicNewsCard(props) {
+  let classes = "basic-news-card ";
+  if(props.noImage === true) {
+    classes += "no-image "
+  }
+  if(props.horizontal === true) {
+    classes += "horz "
+  }
   return (
-    <div className="basic-news-card">
+    <div className={classes}>
       <a href="#">
         <div className="img">
           <img src={props.article.img} />
