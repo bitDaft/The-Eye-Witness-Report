@@ -1,0 +1,12 @@
+.basic-news-section {
+  & > h1 {
+    font-size:2rem;
+    padding-bottom: 1px;
+    border-bottom: 1px solid rgb(194, 194, 194);
+    margin-bottom: 12px;;
+    & > span {
+      text-transform: capitalize;
+      border-bottom: 2px solid #8a8a8a;
+    }
+  }
+}
