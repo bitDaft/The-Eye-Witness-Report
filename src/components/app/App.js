@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Test from 'components/basic/test';
 
+import Home from 'components/views/Home'
 
 
 function App() {
@@ -15,8 +16,8 @@ function App() {
         <Route path="/test">
           <Test />
         </Route>
-        <Route path="/about">
-          {/* <About /> */}
+        <Route path="/">
+          <Home />
         </Route>
         <Route path="/users">
           {/* <Users /> */}
