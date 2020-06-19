@@ -11,15 +11,27 @@ class SearchTopics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: false,
+      search: !!props.value.length,
       searchQuery: props.value,
+      isFocused: false,
     };
     this.ref = null;
+  }
+  componentDidMount() {
+    this.timer = window.setInterval(() => {
+      if (!this.state.isFocused && !this.props.value) {
+        this.setState({ search: false });
+      }
+    }, 1500);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   toggleSearchBar = (e) => {
     if (!this.state.search) {
       this.ref.focus();
+      this.setState({ isFocused: true });
     }
     this.setState(
       (state) => ({ search: !this.state.search, searchQuery: "" }),
@@ -36,6 +48,7 @@ class SearchTopics extends React.Component {
   };
   squishSearch = () => {
     window.setTimeout(() => {
+      this.setState({ isFocused: false });
       if (!this.props.value) {
         this.setState((state) => ({ search: false }));
       }
@@ -44,6 +57,7 @@ class SearchTopics extends React.Component {
 
   render() {
     let searchClasses = "search ";
+
     if (this.state.search) {
       searchClasses += "active ";
     }

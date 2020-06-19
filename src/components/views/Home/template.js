@@ -169,6 +169,7 @@ class TemplateClassComponent extends React.Component {
       {
         [e.target.name]: value,
         loading: true,
+        search: "",
       },
       () => {
         this.getHome();
