@@ -33,8 +33,9 @@
       font-size: 1.2rem;
       cursor: pointer;
       position: relative;
-      & > * {
+      & > i {
         vertical-align: middle;
+        margin-left: 3px;
       }
       & > select {
         cursor: pointer;

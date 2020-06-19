@@ -138,7 +138,7 @@ class TemplateClassComponent extends React.Component {
         });
       });
   };
-  handleChange = (e) => {
+  handleSearch = (e) => {
     if (this.state.search === e.target.value) {
       return;
     }
@@ -160,21 +160,36 @@ class TemplateClassComponent extends React.Component {
     );
   };
 
+  handleSelect = (e) => {
+    let value = this.times.filter((_) => +_.period === +e.target.value)[0];
+    if (this.state.period.period === value.period) {
+      return;
+    }
+    this.setState(
+      {
+        [e.target.name]: value,
+        loading: true,
+      },
+      () => {
+        this.getHome();
+      }
+    );
+  };
+
   render() {
     return (
       <div className="home">
         <Header
           text={this.state.period.text}
           periods={this.times}
-          onChange={(e) => {
-            console.log(e.target.value);
-          }}
-          value={this.state.period}
+          name="period"
+          onChange={this.handleSelect}
+          value={this.state.period.period}
         />
         <div className="content">
           <SearchTopics
             value={this.state.search}
-            onChange={this.handleChange}
+            onChange={this.handleSearch}
             name="search"
           />
           <br />

@@ -20,9 +20,9 @@ class TemplateClassComponent extends React.Component {
               {today.toDateString()} | Showing {this.props.text}'s paper
             </span>
             <i className="fas fa-angle-down" />
-            <select value={this.props.value} onChange={this.props.onChange}>
+            <select value={this.props.value} onChange={this.props.onChange} name={this.props.name}>
               {this.props.periods.map((period) => {
-                return <option key={period.period} value={period}>{period.text}</option>;
+                return <option key={period.period} value={period.period}>{period.text}</option>;
               })}
             </select>
           </div>
