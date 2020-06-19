@@ -18,7 +18,9 @@ class SearchTopics extends React.Component {
     this.ref = null;
     this.timer = 0;
   }
-
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
   toggleSearchBar = (e) => {
     if (!this.state.search) {
       this.ref.focus();
