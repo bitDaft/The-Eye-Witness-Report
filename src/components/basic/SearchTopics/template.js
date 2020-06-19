@@ -16,16 +16,7 @@ class SearchTopics extends React.Component {
       isFocused: false,
     };
     this.ref = null;
-  }
-  componentDidMount() {
-    this.timer = window.setInterval(() => {
-      if (!this.state.isFocused && !this.props.value) {
-        this.setState({ search: false });
-      }
-    }, 1500);
-  }
-  componentWillUnmount() {
-    clearInterval(this.timer);
+    this.timer = 0;
   }
 
   toggleSearchBar = (e) => {
@@ -37,6 +28,14 @@ class SearchTopics extends React.Component {
       (state) => ({ search: !this.state.search, searchQuery: "" }),
       () => {
         this.ref.value = "";
+        if (this.state.search) {
+          this.timer = window.setInterval(() => {
+            if (!this.state.isFocused && !this.props.value) {
+              clearInterval(this.timer);
+              this.setState({ search: false });
+            }
+          }, 1500);
+        }
         this.props.onChange({
           target: {
             name: this.props.name,
