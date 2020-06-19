@@ -18,7 +18,7 @@ function BasicNewsCard(props) {
   }
   return (
     <div className={classes}>
-      <a href="#indx">
+      <div>
         <div className="img">
           <img src={props.article.img} alt={props.article.imgcaption} />
         </div>
@@ -26,7 +26,7 @@ function BasicNewsCard(props) {
           <h1>{props.article.title}</h1>
           <p>{props.article.description}</p>
         </div>
-      </a>
+      </div>
     </div>
   );
 }

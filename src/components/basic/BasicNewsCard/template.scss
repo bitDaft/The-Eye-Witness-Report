@@ -1,5 +1,5 @@
 .basic-news-card {
-  & > a {
+  & > div {
     text-decoration: none;
     display: flex;
     flex-flow: column nowrap;
@@ -61,12 +61,12 @@
     }
   }
   &.no-image {
-    & > a > .img {
+    & > div > .img {
       display: none;
     }
   }
   &.horz {
-    & > a {
+    & > div {
       flex-flow: row-reverse wrap;
       & > .img {
         max-width: 220px;
