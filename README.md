@@ -4,7 +4,7 @@ This is a simple news reader app with data fetched from The New York Time API.
 
 To obtain an API key, go [here](https://developer.nytimes.com/get-started) and follow the instructions.  
 
-Paste the obtained API key in the ```config.js``` file.  
+Paste the obtained API key in the ```src/config.js``` file.  
 
 ---  
 
