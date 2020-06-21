@@ -1,9 +1,10 @@
 import React from "react";
 import "./template.scss";
 
+import times from "utils/times";
+
 import { connect } from "react-redux";
 
-import times from "utils/times";
 import { Link } from "react-router-dom";
 
 import {
@@ -65,6 +66,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       e.preventDefault();
       const period = times.find((period) => +period.period === +e.target.value);
       dispatch(handleSearchProper(""));
+      dispatch(toggleSearch(false));
       dispatch(handlePeriod(period));
       dispatch(getPopularArticles(period.period));
     },

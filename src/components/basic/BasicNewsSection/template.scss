@@ -7,7 +7,7 @@
     margin-bottom: 12px;
     & > span {
       text-transform: capitalize;
-      border-bottom: 2px solid #8a8a8a;
+      border-bottom: 3px solid rgb(255, 23, 23);
     }
   }
   & > .content {
@@ -21,7 +21,7 @@
       max-width: 1180px;
       &:last-child {
         background-color: white;
-        box-shadow: 0 0 12px -10px black;
+        box-shadow: 0 0 12px -8px black;
         & > li {
           flex-basis: 250px;
           max-width: 325px;
@@ -42,6 +42,9 @@
     & > .content {
       & > ul {
         justify-content: center;
+        & > li {
+          max-width: unset;
+        }
       }
     }
   }

@@ -1,8 +1,9 @@
 import React from "react";
 import "./template.scss";
 
-import { handleSearch, handleSearchProper, toggleSearch } from "store/actions";
 import { connect } from "react-redux";
+
+import { handleSearch, handleSearchProper, toggleSearch } from "store/actions";
 
 class SearchTopics extends React.Component {
   constructor(props) {
@@ -14,16 +15,15 @@ class SearchTopics extends React.Component {
     this.timer = 0;
     this.timer2 = 0;
   }
-  focus = () => {
-    this.ref.focus();
-    this.setState({ isFocused: true });
-  };
   componentWillUnmount() {
     clearInterval(this.timer);
     clearTimeout(this.timer2);
   }
+  focus = () => {
+    this.ref.focus();
+    this.setState({ isFocused: true });
+  };
   toggleSearchBar = (e) => {
-    console.log("111");
     this.props.changeSearchState(!this.props.isSearchOpen);
     if (!this.props.isSearchOpen) {
       this.focus();
@@ -47,7 +47,6 @@ class SearchTopics extends React.Component {
 
   render() {
     let searchClasses = "search ";
-
     if (this.props.isSearchOpen) {
       searchClasses += "active ";
     }

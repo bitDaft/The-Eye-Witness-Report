@@ -13,7 +13,6 @@ import newsApp from "store/reducer";
 
 const store = createStore(newsApp, {}, applyMiddleware(thunkMiddleware));
 
-
 ReactDOM.render(
   <Provider store={store}>
     <Router>

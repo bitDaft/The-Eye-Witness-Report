@@ -1,7 +1,3 @@
-//
-//
-//
-
 import { combineReducers } from "redux";
 
 import {
@@ -54,15 +50,6 @@ function loading(state = true, action) {
       return state;
   }
 }
-
-// function newsApp(state = {}, action) {
-//   return {
-//     currentPeriod: currentPeriod(state.currentPeriod, action),
-//     popular: popular(state.popular, action),
-//     search: search(state.search, action),
-//     loading: loading(state.loading, action),
-//   };
-// }
 
 const newsApp = combineReducers({
   currentPeriod,

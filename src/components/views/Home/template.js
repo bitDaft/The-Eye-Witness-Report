@@ -9,23 +9,20 @@ import SearchTopics from "components/basic/SearchTopics";
 import Header from "components/layouts/Header";
 import Footer from "components/layouts/Footer";
 
-import { getPopularArticles, getSearchArticles } from "store/actions";
 import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 
+import { getPopularArticles, getSearchArticles } from "store/actions";
+
 class Home extends React.Component {
   componentDidMount() {
-    this.init();
-  }
-
-  init = () => {
     if (this.props.isSearchOpen) {
       this.props.getSearchArticles(this.props.searchValue);
     } else {
       this.props.getPopularArticles(this.props.currentPeriod);
     }
-  };
+  }
 
   render() {
     return (
@@ -84,6 +81,7 @@ class Home extends React.Component {
     );
   }
 }
+
 const mapStateToProps = (state, ownProps) => {
   return {
     loading: state.loading,
@@ -93,6 +91,7 @@ const mapStateToProps = (state, ownProps) => {
     searchValue: state.search,
   };
 };
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getPopularArticles: (currentPeriod) => {
@@ -105,4 +104,3 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-// export default TemplateClassComponent;
