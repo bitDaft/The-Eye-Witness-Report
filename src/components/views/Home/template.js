@@ -17,6 +17,7 @@ import { getPopularArticles, getSearchArticles } from "store/actions";
 
 class Home extends React.Component {
   componentDidMount() {
+    window.scrollTo(0,0)
     if (this.props.isSearchOpen) {
       this.props.getSearchArticles(this.props.searchValue);
     } else {

@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 
 function ArticleDetails(props) {
+  window.scrollTo(0, 0);
   let content = null;
   if (!props.article) {
     content = <Redirect to="/" />;
