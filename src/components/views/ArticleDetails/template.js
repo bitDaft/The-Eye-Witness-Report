@@ -5,13 +5,7 @@ import Header from "components/layouts/Header";
 
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import { handleSearchProper, toggleSearch, handleSearch } from "store/actions";
-
-// function TemplateFuncComponent(props) {
-//   return (
-//     <div></div>
-//   );
-// }
+import Footer from "components/layouts/Footer";
 
 class ArticleDetails extends React.Component {
   render() {
@@ -27,7 +21,13 @@ class ArticleDetails extends React.Component {
             </Link>
           </div>
           <h1 className="title">{this.props.article.title}</h1>
+
+          <img src={this.props.article.img} />
           <p>{this.props.article.description}</p>
+          <p>
+            Read the rest of the story at{" "}
+            <a href={this.props.article.url}>The New York Times</a>
+          </p>
         </div>
       );
     }
@@ -35,6 +35,7 @@ class ArticleDetails extends React.Component {
       <div className="article-details">
         <Header onlyHeader={true} />
         {content}
+        <Footer />
       </div>
     );
   }
@@ -52,10 +53,7 @@ const mapStateToProps = (state, ownProps) => {
     article,
   };
 };
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {};
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleDetails);
+export default connect(mapStateToProps)(ArticleDetails);
 
 // export default ArticleDetails;
