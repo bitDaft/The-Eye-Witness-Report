@@ -1,0 +1,40 @@
+.footer {
+  background-color: rgb(46, 46, 46);
+  border-top: 4px solid rgb(255, 23, 23);
+  color: white;
+  display: flex;
+  justify-content: center;
+  & > .content {
+    margin: 20px 0;
+    width: 1000px;
+    height: 200px;
+    display: flex;
+    flex-flow: column nowrap;
+    & > div {
+      margin: 5px 0;
+    }
+    & > h1 {
+      font-size: 3rem;
+      font-family: "Playfair Display", serif;
+    }
+    & > p {
+      &:last-child {
+        margin: 10px;
+        margin-left: 0px;
+        letter-spacing: 1px;
+        word-spacing: 5px;
+        & > * {
+          vertical-align: middle;
+        }
+        margin-top: auto;
+        font-size: 1.5rem;
+        & > .heart {
+          color: red;
+        }
+        & > .react {
+          color: #8585ff;
+        }
+      }
+    }
+  }
+}
