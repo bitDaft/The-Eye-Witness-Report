@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./template.scss";
 
 import { connect } from "react-redux";
@@ -42,7 +42,9 @@ function Header(props) {
     <div className="header">
       <div className="logo">
         <Link to="/" onClick={props.clearSearch}>
-          <div>The Eye Witness Report</div>
+          <div>
+            The <span>Eye</span> Witness Report
+          </div>
         </Link>
         {period_section}
       </div>
@@ -66,11 +68,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(handlePeriod(period));
       dispatch(getPopularArticles(period.period));
     },
-    clearSearch : ()=>{
+    clearSearch: () => {
       dispatch(toggleSearch(false));
       dispatch(handleSearchProper(""));
       dispatch(handleSearch(""));
-    }
+    },
   };
 };
 
