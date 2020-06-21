@@ -4,7 +4,8 @@ import "./template.scss";
 import Header from "components/layouts/Header";
 
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import { handleSearchProper, toggleSearch, handleSearch } from "store/actions";
 
 // function TemplateFuncComponent(props) {
 //   return (
@@ -20,6 +21,11 @@ class ArticleDetails extends React.Component {
     } else {
       content = (
         <div className="content">
+          <div className="back">
+            <Link to="/" className="backLink">
+              <i className="fas fa-arrow-left"></i>
+            </Link>
+          </div>
           <h1 className="title">{this.props.article.title}</h1>
           <p>{this.props.article.description}</p>
         </div>

@@ -10,6 +10,8 @@ import {
   handlePeriod,
   handleSearchProper,
   getPopularArticles,
+  toggleSearch,
+  handleSearch,
 } from "store/actions";
 
 function Header(props) {
@@ -40,7 +42,7 @@ function Header(props) {
     <div className="header">
       <div className="pop-up">=</div>
       <div className="logo">
-        <Link to="/">
+        <Link to="/" onClick={props.clearSearch}>
           <div>The Eye Witness Report</div>
         </Link>
         {period_section}
@@ -65,6 +67,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(handlePeriod(period));
       dispatch(getPopularArticles(period.period));
     },
+    clearSearch : ()=>{
+      dispatch(toggleSearch(false));
+      dispatch(handleSearchProper(""));
+      dispatch(handleSearch(""));
+    }
   };
 };
 
