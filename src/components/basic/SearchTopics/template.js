@@ -45,7 +45,7 @@ class SearchTopics extends React.Component {
       if (!this.props.value && this.props.isSearchOpen) {
         this.props.changeSearchState(false);
       }
-    }, 150);
+    }, 100);
   };
 
   render() {
@@ -57,11 +57,6 @@ class SearchTopics extends React.Component {
     let icon = !this.props.isSearchOpen ? "fas fa-search" : "fas fa-times";
     return (
       <div className="search-topics">
-        <ul>
-          <li>US</li>
-          <li>WORLD</li>
-          <li>ARTS</li>
-        </ul>
         <div className={searchClasses}>
           <input
             ref={(ref) => (this.ref = ref)}

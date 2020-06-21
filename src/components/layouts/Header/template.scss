@@ -8,15 +8,6 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  & > .pop-up {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 25px;
-    position: relative;
-    font-size: 4rem;
-    font-weight: bold;
-    left: 10px;
-  }
   & > .logo {
     margin: auto;
     font-weight: bold;
@@ -55,14 +46,6 @@
           font-weight: bold;
         }
       }
-    }
-  }
-}
-
-@media screen and (min-width: 720px) {
-  .header {
-    & > .pop-up {
-      display: none;
     }
   }
 }

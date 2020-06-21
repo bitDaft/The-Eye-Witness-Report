@@ -40,7 +40,6 @@ function Header(props) {
     );
   return (
     <div className="header">
-      <div className="pop-up">=</div>
       <div className="logo">
         <Link to="/" onClick={props.clearSearch}>
           <div>The Eye Witness Report</div>
