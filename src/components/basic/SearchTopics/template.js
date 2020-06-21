@@ -1,18 +1,14 @@
 import React from "react";
 import "./template.scss";
 
-// function TemplateFuncComponent(props) {
-//   return (
-//     <div></div>
-//   );
-// }
+import { handleSearch, handleSearchProper } from "store/actions";
+import { connect } from "react-redux";
 
 class SearchTopics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       search: !!props.value.length,
-      searchQuery: props.value,
       isFocused: false,
     };
     this.ref = null;
@@ -27,10 +23,11 @@ class SearchTopics extends React.Component {
       this.setState({ isFocused: true });
     }
     this.setState(
-      (state) => ({ search: !this.state.search, searchQuery: "" }),
+      (state) => ({ search: !this.state.search }),
       () => {
         this.ref.value = "";
         if (this.state.search) {
+          clearInterval(this.timer);
           this.timer = window.setInterval(() => {
             if (!this.state.isFocused && !this.props.value) {
               clearInterval(this.timer);
@@ -89,4 +86,25 @@ class SearchTopics extends React.Component {
   }
 }
 
-export default SearchTopics;
+let timer = 0;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    value: state.search,
+    name: "currentPeriod",
+  };
+};
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onChange: (e) => {
+      const value = e.target.value.trim();
+      dispatch(handleSearchProper(value));
+      clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        dispatch(handleSearch(value));
+      }, 500);
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchTopics);
+// export default SearchTopics;

@@ -1,51 +1,71 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./template.scss";
 
+import { connect } from "react-redux";
+
+import times from "utils/times";
 import { Link } from "react-router-dom";
 
-// function TemplateFuncComponent(props) {
-//   return (
-//     <div></div>
-//   );
-// }
+import {
+  handlePeriod,
+  handleSearchProper,
+  getPopularArticles,
+} from "store/actions";
 
-class TemplateClassComponent extends React.Component {
-  render() {
-    const today = new Date();
-    let period_section =
-      this.props.onlyHeader === true ? null : (
-        <div>
-          <span>
-            {today.toDateString()} | Showing {this.props.text}'s paper
-          </span>
-          <i className="fas fa-angle-down" />
-          <select
-            value={this.props.value}
-            onChange={this.props.onChange}
-            name={this.props.name}
-          >
-            {this.props.periods.map((period) => {
-              return (
-                <option key={period.period} value={period.period}>
-                  {period.text}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-      );
-    return (
-      <div className="header">
-        <div className="pop-up">=</div>
-        <div className="logo">
-          <Link to="/">
-            <div>The Eye Witness Report</div>
-          </Link>
-          {period_section}
-        </div>
+function Header(props) {
+  const today = new Date();
+  const period_section =
+    props.onlyHeader === true ? null : (
+      <div>
+        <span>
+          {today.toDateString()} | Showing {props.currentPeriod.text}'s paper
+        </span>
+        <i className="fas fa-angle-down" />
+        <select
+          value={+props.currentPeriod.period}
+          onChange={props.onChange}
+          name={props.name}
+        >
+          {times.map((period) => {
+            return (
+              <option key={period.period} value={+period.period}>
+                {period.text}
+              </option>
+            );
+          })}
+        </select>
       </div>
     );
-  }
+  return (
+    <div className="header">
+      <div className="pop-up">=</div>
+      <div className="logo">
+        <Link to="/">
+          <div>The Eye Witness Report</div>
+        </Link>
+        {period_section}
+      </div>
+    </div>
+  );
 }
 
-export default TemplateClassComponent;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    onlyHeader: ownProps.onlyHeader,
+    currentPeriod: state.currentPeriod,
+    name: "currentPeriod",
+  };
+};
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onChange: (e) => {
+      e.preventDefault();
+      const period = times.find((period) => +period.period === +e.target.value);
+      dispatch(handleSearchProper(""));
+      dispatch(handlePeriod(period));
+      dispatch(getPopularArticles(period.period));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

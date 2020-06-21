@@ -8,6 +8,14 @@
       flex-grow: 1;
       flex-shrink: 1;
     }
+    & .card-link {
+      &:link,
+      &:visited,
+      &:active {
+        text-decoration: none;
+        color: rgb(40, 40, 40);
+      }
+    }
     & > .loading {
       display: block;
       position: fixed;
