@@ -10,7 +10,7 @@ import Header from "components/layouts/Header";
 
 import config from "config";
 
-import { getPopularArticles } from "store/actions";
+import { getPopularArticles, getSearchArticles } from "store/actions";
 import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
@@ -27,7 +27,11 @@ class Home extends React.Component {
   }
 
   init = () => {
-    this.props.getPopularArticles(this.props.currentPeriod);
+    if (this.props.isSearchOpen) {
+      this.props.getSearchArticles(this.props.searchValue);
+    } else {
+      this.props.getPopularArticles(this.props.currentPeriod);
+    }
   };
 
   render() {
@@ -48,7 +52,10 @@ class Home extends React.Component {
                   media={this.props.popular[section_title].media.map(
                     (article) => {
                       return (
-                        <Link to={"/details/" + article.id} className="card-link">
+                        <Link
+                          to={"/details/" + article.id}
+                          className="card-link"
+                        >
                           <StandardNewsCard
                             article={article}
                             key={article.id}
@@ -60,7 +67,10 @@ class Home extends React.Component {
                   no_media={this.props.popular[section_title].no_media.map(
                     (article) => {
                       return (
-                        <Link to={"/details/" + article.id} className="card-link">
+                        <Link
+                          to={"/details/" + article.id}
+                          className="card-link"
+                        >
                           <BasicNewsCard
                             noImage={true}
                             horizontal={true}
@@ -84,13 +94,18 @@ const mapStateToProps = (state, ownProps) => {
   return {
     loading: state.loading,
     popular: state.popular,
-    currentPeriod : state.currentPeriod.period
+    currentPeriod: state.currentPeriod.period,
+    isSearchOpen: state.isSearchOpen,
+    searchValue: state.search,
   };
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getPopularArticles: (currentPeriod) => {
       dispatch(getPopularArticles(currentPeriod));
+    },
+    getSearchArticles: (text) => {
+      dispatch(getSearchArticles(text));
     },
   };
 };
