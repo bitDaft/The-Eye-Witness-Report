@@ -14,9 +14,6 @@ class SearchTopics extends React.Component {
     this.timer = 0;
     this.timer2 = 0;
   }
-  componentWillUpdate(props) {
-    console.log(props);
-  }
   focus = () => {
     this.ref.focus();
     this.setState({ isFocused: true });
