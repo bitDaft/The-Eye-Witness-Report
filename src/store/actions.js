@@ -72,6 +72,7 @@ export function getPopularArticles(period) {
               ? ""
               : article.media[0]["media-metadata"].reverse()[0].url,
             imgcaption: !article.media.length ? "" : article.media[0].caption,
+            url: article.url,
           };
           if (!formatted_articles.hasOwnProperty(article.section)) {
             formatted_articles[article.section] = {
@@ -116,6 +117,7 @@ export function getSearchArticles(text) {
                   (media) => media.subtype === "mediumThreeByTwo440"
                 )[0].url,
             imgcaption: "",
+            url: article.web_url || "",
           };
           if (!formatted_articles.hasOwnProperty(article.section_name)) {
             formatted_articles[article.section_name] = {
