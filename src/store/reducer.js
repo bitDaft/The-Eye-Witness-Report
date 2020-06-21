@@ -9,10 +9,19 @@ import {
   HANDLE_PERIOD,
   LOADING,
   RECIEVE_ARTICLE,
+  SEARCH_BAR,
 } from "store/actions";
 
 import times from "utils/times";
 
+function isSearchOpen(state = false, action) {
+  switch (action.type) {
+    case SEARCH_BAR:
+      return action.open;
+    default:
+      return state;
+  }
+}
 function currentPeriod(state = times[0], action) {
   switch (action.type) {
     case HANDLE_PERIOD:
@@ -60,6 +69,7 @@ const newsApp = combineReducers({
   popular,
   search,
   loading,
+  isSearchOpen,
 });
 
 export default newsApp;

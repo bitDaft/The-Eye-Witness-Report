@@ -3,6 +3,7 @@ import config from "config";
 export const HANDLE_SEARCH = "HANDLE_SEARCH";
 export const HANDLE_PERIOD = "HANDLE_PERIOD";
 export const LOADING = "LOADING";
+export const SEARCH_BAR = "SEARCH_BAR";
 export const RECIEVE_ARTICLE = "RECIEVE_ARTICLE";
 
 let conf = config[config.env];
@@ -29,6 +30,12 @@ export function handlePeriod(period) {
   return {
     type: HANDLE_PERIOD,
     period,
+  };
+}
+export function toggleSearch(open) {
+  return {
+    type: SEARCH_BAR,
+    open,
   };
 }
 
