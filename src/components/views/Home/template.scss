@@ -1,0 +1,71 @@
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  & > .content {
+    padding: 0 20px;
+    width: 100%;
+    flex: 1 0 auto;
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    & > * {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+    & .card-link {
+      &:link,
+      &:visited,
+      &:active {
+        text-decoration: none;
+        color: rgb(40, 40, 40);
+      }
+    }
+    & > .loading {
+      display: block;
+      position: fixed;
+      top: 50vh;
+      left: 50vw;
+      transform: translate(-50%, -50%) rotateZ(0deg);
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #939393;
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        left: 50%;
+        top: 50%;
+        animation: rotate 0.9s linear infinite;
+        background-color: #fdfdfd;
+      }
+      &::after {
+        content: "Loading";
+        display: block;
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        height: 30px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        font-size: 1.7rem;
+        background-color: transparent;
+        text-align: center;
+        transform: translate(-50%);
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}

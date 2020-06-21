@@ -1,0 +1,55 @@
+.header {
+  width: 100%;
+  padding: 20px 0px;
+  background-color: #fefefe;
+  box-shadow: 0 0 12px -8px rgb(36, 36, 36);
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  & > .logo {
+    margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    & > a {
+      text-decoration: none;
+      &:link,
+      &:visited,
+      &:active {
+        color: black;
+      }
+      & > div {
+        font-size: 2.9rem;
+        font-family: "Playfair Display", serif;
+        & > span {
+          font-family: inherit;
+          color: rgb(255, 23, 23);
+        }
+      }
+      margin-bottom: 12px;
+    }
+    & > div {
+      font-size: 1.2rem;
+      cursor: pointer;
+      position: relative;
+      & > i {
+        vertical-align: middle;
+        margin-left: 3px;
+      }
+      & > select {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+        & > option {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}

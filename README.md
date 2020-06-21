@@ -1,3 +1,13 @@
+# The Eye Witness Report
+
+This is a simple news reader app with data fetched from The New York Time API. 
+
+To obtain an API key, go [here](https://developer.nytimes.com/get-started) and follow the instructions.  
+
+Paste the obtained API key in the ```config.js``` file.  
+
+---  
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -24,6 +34,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
+
+Once it has been built you may serve it with a static server:
+```
+  npm install -g serve
+  serve -s build
+```
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 

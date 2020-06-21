@@ -1,29 +1,22 @@
 import React from "react";
 import "./App.css";
 
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-
-
-import Test from 'components/basic/test';
+import Home from "components/views/Home";
+import ArticleDetail from "components/views/ArticleDetails";
+import NotFound from "components/views/NotFound";
 
 function App() {
-  
   return (
     <div className="App">
       <Switch>
-        <Route path="/test">
-          <Test />
+        <Route exact path="/details/:id" component={ArticleDetail} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/">
+          <Redirect to="/home" />
         </Route>
-        <Route path="/about">
-          {/* <About /> */}
-        </Route>
-        <Route path="/users">
-          {/* <Users /> */}
-        </Route>
-        <Route path="/">
-          {/* <Home /> */}
-        </Route>
+        <Route path="*" component={NotFound} />
       </Switch>
     </div>
   );
