@@ -1,3 +1,13 @@
+# The Eye Witness Report
+
+This is a simple news reader app with data fetched from The New York Time API. 
+
+To obtain an API key, go [here](https://developer.nytimes.com/get-started) and follow the instructions.  
+
+Paste the obtained API key in the ```config.js``` file.  
+
+---  
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
