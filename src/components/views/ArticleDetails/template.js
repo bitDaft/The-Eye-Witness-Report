@@ -1,5 +1,10 @@
-import React from 'react';
-import './template.scss';
+import React from "react";
+import "./template.scss";
+
+import Header from "components/layouts/Header";
+
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 // function TemplateFuncComponent(props) {
 //   return (
@@ -8,13 +13,43 @@ import './template.scss';
 // }
 
 class ArticleDetails extends React.Component {
-  render (){
+  render() {
+    let content = null;
+    if (!this.props.article) {
+      content = <Redirect to="/" />;
+    } else {
+      content = (
+        <div className="content">
+          <h1 className="title">{this.props.article.title}</h1>
+          <p>{this.props.article.description}</p>
+        </div>
+      );
+    }
     return (
       <div className="article-details">
-        article details
+        <Header onlyHeader={true} />
+        {content}
       </div>
     );
   }
 }
 
-export default ArticleDetails;
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id;
+  let allArticles = [];
+  Object.keys(state.popular).forEach((key) => {
+    allArticles.push(...state.popular[key].media);
+    allArticles.push(...state.popular[key].no_media);
+  });
+  let article = allArticles.filter((article) => article.id === id)[0];
+  return {
+    article,
+  };
+};
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleDetails);
+
+// export default ArticleDetails;
