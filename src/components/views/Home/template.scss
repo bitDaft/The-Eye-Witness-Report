@@ -1,5 +1,10 @@
 .home {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+
   & > .content {
+    flex: 1 0 auto;
     max-width: 1024px;
     margin: auto;
     display: flex;

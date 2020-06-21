@@ -7,19 +7,12 @@ import BasicNewsSection from "components/basic/BasicNewsSection";
 import SearchTopics from "components/basic/SearchTopics";
 
 import Header from "components/layouts/Header";
-
-import config from "config";
+import Footer from "components/layouts/Footer";
 
 import { getPopularArticles, getSearchArticles } from "store/actions";
 import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
-
-// function TemplateFuncComponent(props) {
-//   return (
-//     <div></div>
-//   );
-// }
 
 class Home extends React.Component {
   componentDidMount() {
@@ -86,6 +79,7 @@ class Home extends React.Component {
             })
           )}
         </div>
+        <Footer />
       </div>
     );
   }
